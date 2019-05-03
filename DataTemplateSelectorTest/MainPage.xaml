@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="DataTemplateSelectorTest.MainPage" 
+             xmlns:ui="clr-namespace:DataTemplateSelectorTest.UI;assembly=DataTemplateSelectorTest">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ui:MyDataTemplateSelector x:Key="ListViewSelector"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+   <Grid HorizontalOptions="Center"
+         VerticalOptions="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ListView HasUnevenRows="true"
+                  x:Name="TestListview"
+                  ItemsSource="{Binding ListOfNames}"
+                  ItemTemplate="{StaticResource ListViewSelector}"
+                  SeparatorVisibility="None"
+                  Rotation="180">
+        </ListView>
+        <Entry Placeholder="Enter a name"
+               Text="{Binding NewNameToAdd}"
+               Grid.Row="1"/>
+        <Button Text="Add Name"
+                Grid.Row="2"
+                BackgroundColor="OrangeRed"
+                TextColor="Black"
+                FontAttributes="Bold"
+                FontSize="Medium"
+                Margin="10"
+                Command="{Binding AddNameCmd}"/>
+    </Grid>
+</ContentPage>
