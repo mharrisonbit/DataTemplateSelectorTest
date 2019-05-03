@@ -18,8 +18,9 @@
         </Grid.RowDefinitions>
         <ListView HasUnevenRows="true"
                   x:Name="TestListview"
-                  ItemsSource="{Binding ListOfNames}"
+                  ItemsSource="{Binding Items,Mode=TwoWay}"
                   ItemTemplate="{StaticResource ListViewSelector}"
+                  CachingStrategy="RecycleElement"
                   SeparatorVisibility="None"
                   Rotation="180">
         </ListView>

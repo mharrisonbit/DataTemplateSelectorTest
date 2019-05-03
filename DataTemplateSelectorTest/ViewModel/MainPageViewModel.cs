@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using DataTemplateSelectorTest.Helpers;
 using MvvmHelpers;
 using Xamarin.Forms;
 
@@ -7,6 +9,22 @@ namespace DataTemplateSelectorTest.ViewModel
 {
     public class MainPageViewModel : BaseViewModel
     {
+        public MainPageViewModel()
+        {
+            Items = new ObservableCollection<Names>();
+            ListOfNames = new List<object>
+            {
+                "Bob", "John", "Paul", "Mike", "Billy", "Mark"
+            };
+        }
+
+        ObservableCollection<Names> items;
+        public ObservableCollection<Names> Items 
+        {
+            get { return items; }
+            set { SetProperty(ref items, value); }
+        }
+
         string newNameToAdd;
         public string NewNameToAdd
         {
@@ -21,18 +39,23 @@ namespace DataTemplateSelectorTest.ViewModel
             set { SetProperty(ref listOfNames, value); }
         }
 
-        public MainPageViewModel()
+        ObservableCollection<Names> name;
+        public ObservableCollection<Names> Name
         {
-            ListOfNames = new List<object>
-            {
-                "Bob", "John", "Paul", "Mike", "Billy", "Mark"
-            };
+            get { return name; }
+            set { SetProperty(ref name, value); }
         }
 
         public Command AddNameCmd => new Command(() =>
         {
-            ListOfNames.Add(NewNameToAdd);
+            //ListOfNames.Add(NewNameToAdd);
+
+            items.Add(new Names
+            {
+                FirstName = NewNameToAdd
+            });
         });
+
 
     }
 }

@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using System.Collections.ObjectModel;
+using DataTemplateSelectorTest.Helpers;
+using Xamarin.Forms;
 
 namespace DataTemplateSelectorTest.UI
 {
@@ -6,11 +8,17 @@ namespace DataTemplateSelectorTest.UI
     {
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            var name = item as string;
-            if (name.StartsWith("B"))
+            var name = new ObservableCollection<Names>
             {
-                return new DataTemplate(typeof(ListViewDataTemplateView));
-            }
+                new Names
+                {
+                    FirstName = item.ToString()
+                }
+            };
+            //if (name)
+            //{
+            //    return new DataTemplate(typeof(ListViewDataTemplateView));
+            //}
 
             return new DataTemplate(typeof(YourDataTemplateView));
         }
