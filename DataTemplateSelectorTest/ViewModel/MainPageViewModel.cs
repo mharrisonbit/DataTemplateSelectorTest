@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using DataTemplateSelectorTest.Helpers;
 using MvvmHelpers;
@@ -11,51 +9,44 @@ namespace DataTemplateSelectorTest.ViewModel
     {
         public MainPageViewModel()
         {
-            Items = new ObservableCollection<Names>();
-            ListOfNames = new List<object>
-            {
-                "Bob", "John", "Paul", "Mike", "Billy", "Mark"
-            };
+            Names = new ObservableCollection<Name>();
         }
 
-        ObservableCollection<Names> items;
-        public ObservableCollection<Names> Items 
+        string lastNameToAdd;
+        public string LastNameToAdd
         {
-            get { return items; }
-            set { SetProperty(ref items, value); }
+            get { return lastNameToAdd; }
+            set { SetProperty(ref lastNameToAdd, value); }
         }
 
-        string newNameToAdd;
-        public string NewNameToAdd
+        string firstNameToAdd;
+        public string FirstNameToAdd
         {
-            get { return newNameToAdd; }
-            set { SetProperty(ref newNameToAdd, value); }
+            get { return firstNameToAdd; }
+            set { SetProperty(ref firstNameToAdd, value); }
         }
 
-        List<Object> listOfNames;
-        public List<object> ListOfNames
-        {
-            get { return listOfNames; }
-            set { SetProperty(ref listOfNames, value); }
-        }
+        //ObservableCollection<Name> items;
+        //public ObservableCollection<Name> Items
+        //{
+        //    get { return items; }
+        //    set { SetProperty(ref items, value); }
+        //}
 
-        ObservableCollection<Names> name;
-        public ObservableCollection<Names> Name
+        ObservableCollection<Name> names;
+        public ObservableCollection<Name> Names
         {
-            get { return name; }
-            set { SetProperty(ref name, value); }
+            get { return names; }
+            set { SetProperty(ref names, value); }
         }
 
         public Command AddNameCmd => new Command(() =>
         {
-            //ListOfNames.Add(NewNameToAdd);
-
-            items.Add(new Names
+            Names.Add(new Name
             {
-                FirstName = NewNameToAdd
+                FirstName = FirstNameToAdd,
+                LastName = LastNameToAdd
             });
         });
-
-
     }
 }

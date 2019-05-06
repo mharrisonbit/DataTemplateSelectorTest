@@ -15,20 +15,24 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ListView HasUnevenRows="true"
+        <ListView HasUnevenRows="true"      
                   x:Name="TestListview"
-                  ItemsSource="{Binding Items,Mode=TwoWay}"
+                  ItemsSource="{x:Binding Names, Mode=TwoWay}"
                   ItemTemplate="{StaticResource ListViewSelector}"
                   CachingStrategy="RecycleElement"
                   SeparatorVisibility="None"
                   Rotation="180">
         </ListView>
-        <Entry Placeholder="Enter a name"
-               Text="{Binding NewNameToAdd}"
+        <Entry Placeholder="Enter a first name"
+               Text="{Binding FirstNameToAdd}"
                Grid.Row="1"/>
+        <Entry Placeholder="Enter a last name"
+               Text="{Binding LastNameToAdd}"
+               Grid.Row="2"/>
         <Button Text="Add Name"
-                Grid.Row="2"
+                Grid.Row="3"
                 BackgroundColor="OrangeRed"
                 TextColor="Black"
                 FontAttributes="Bold"
