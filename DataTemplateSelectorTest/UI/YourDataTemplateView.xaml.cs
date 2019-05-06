@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using DataTemplateSelectorTest.ViewModel;
+using Xamarin.Forms;
 
 namespace DataTemplateSelectorTest.UI
 {
@@ -7,6 +8,7 @@ namespace DataTemplateSelectorTest.UI
         public YourDataTemplateView()
         {
             InitializeComponent();
+            BindingContext = new MainPageViewModel();
         }
     }
 }
