@@ -10,6 +10,13 @@ namespace DataTemplateSelectorTest.ViewModel
         public MainPageViewModel()
         {
             Names = new ObservableCollection<Name>();
+            for (int i = 0; i < 5; i++)
+            {
+                Names.Add(new Name
+                {
+                    FirstName = $"bob{i}"
+                });
+            }
         }
 
         string lastNameToAdd;

@@ -8,7 +8,6 @@ namespace DataTemplateSelectorTest.UI
         public YourDataTemplateView()
         {
             InitializeComponent();
-            BindingContext = new MainPageViewModel();
         }
     }
 }
